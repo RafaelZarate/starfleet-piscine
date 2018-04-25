@@ -6,7 +6,7 @@
 /*   By: rzarate <rzarate@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 15:14:07 by rzarate           #+#    #+#             */
-/*   Updated: 2018/04/24 16:41:10 by rzarate          ###   ########.fr       */
+/*   Updated: 2018/04/24 21:05:25 by rzarate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 #include <string.h>
 
 #define TRUE 1
+
+ssize_t readline(char **lineptr, FILE *stream)
+{
+  size_t len = 0;  // Size of the buffer, ignored.
+
+  ssize_t chars = getline(lineptr, &len, stream);
+  if((*lineptr)[--chars] == '\n')
+    (*lineptr)[chars] = '\0';
+  return chars;
+}
 
 struct s_stack	*stackInit(void)
 {
@@ -48,21 +58,20 @@ void			push(struct s_stack *stack, int	n)
 char			*console(void)
 {
 	char			*line;
-	char			message[255];
 	int				line_len;
-	size_t			linecap;
+	char			message[255];
 	int				current_len;
 	int				old_idx;
 	struct s_stack	*stack;
 
 	stack = stackInit();
 	current_len = 0;
-	linecap = 255;
+	line_len = 0;
+	line = calloc(256, sizeof(char));
 	while (TRUE)
 	{
 		write(1, "?: ", 3);
-		while ((line_len = getline(&line, &linecap, 0)) != -1)
-			;
+		line_len = readline(&line, stdin);
 		if (strcmp(line, "SEND") == 0)
 			break ;
 		else if (strcmp(line, "UNDO") == 0)
@@ -74,12 +83,19 @@ char			*console(void)
 				old_idx++;
 			}
 			current_len = stack->item->idx;
-			
+			printf("%s\n", message);
 		}
 		else
 		{
+			if (current_len + strlen(line) > 255)
+			{
+				printf("Damn, get your shit together man, ugh\n");
+				exit(EXIT_FAILURE);
+			}
 			push(stack, current_len);
-			current_len += line_len;
+			current_len += strlen(line);
+			strcat(message, line);
+			printf("%s\n", message);
 		}
 	}
 	return (strdup(message));

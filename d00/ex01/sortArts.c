@@ -6,7 +6,7 @@
 /*   By: rzarate <rzarate@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 02:14:29 by rzarate           #+#    #+#             */
-/*   Updated: 2018/04/23 15:28:16 by rzarate          ###   ########.fr       */
+/*   Updated: 2018/04/25 02:57:54 by rzarate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static	void	quickSort(struct s_art **arts, int low, int high)
 	}
 }
 
-// Only way to figure out length of array. O(n) to figure out length of array
+// Only way to figure out length of array. O(1) to figure out length of array
 
 static int		arr_len(struct s_art **arts)
 {
