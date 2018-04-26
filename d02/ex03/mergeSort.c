@@ -6,12 +6,13 @@
 /*   By: rzarate <rzarate@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 03:11:45 by rzarate           #+#    #+#             */
-/*   Updated: 2018/04/25 04:08:52 by rzarate          ###   ########.fr       */
+/*   Updated: 2018/04/25 23:22:41 by rzarate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <unistd.h>
+#include <stdio.h>
 
 static	struct s_player	**new_arr(int size)
 {
@@ -39,16 +40,20 @@ static	void	merge(struct s_player **players, int start, int middle, int end, str
 	struct s_player **final_arr;
 
 	final_arr = *sorted_player;
-	i = j = -1;
+	i = -1;
+	j = -1;
 	while (++i < size_left)
 		left_array[i] = players[start + i];
 	while (++j < size_right)
 		right_array[i] = players[middle + 1 + j];
-
-	i = j = k = 0;
+	i = 0;
+	j = 0;
+	k = 0;
+	write(1, "a\n", 2);
+	printf("i: %d, j: %d, k: %d, size_l: %d, size_r: %d\n", i, j, k, size_left, size_right);
+	// fflush(stdout);
 	while (i < size_left && j < size_right)
 	{
-		write(1, "LOL", 3);
 		if (right_array[j]->score > left_array[i]->score)
 			players[k++] = right_array[j++];
 		else if (right_array[j]->score == left_array[i]->score)
@@ -69,7 +74,6 @@ static	struct s_player	**mergeSortAlgo(struct s_player **players, int start, int
 	if (start < end)
 	{
 		int	middle;
-
 		middle = start + (end - start) / 2;
 		mergeSortAlgo(players, start, middle);
 		mergeSortAlgo(players, middle + 1, end);
@@ -95,7 +99,7 @@ struct s_player **mergeSort(struct s_player **players)
 {
 	int	len;
 	struct s_player **sorted_player;
-
+	
 	len = arrLen(players);
 	sorted_player = mergeSortAlgo(players, 0, len - 1);
 	return (sorted_player);
