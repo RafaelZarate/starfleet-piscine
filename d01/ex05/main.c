@@ -11,34 +11,80 @@ int main(void)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 100);
-	tankPush(tank, 50);
-	printf("%d\n", tank->stacks[0]->sum);
-	printf("%d\n", tank->stacks[1]->sum);
-	printf("%d\n", tank->stacks[2]->sum);
+	// TEST # 1
+	// tankPush(tank, 100);
+	// printf("%d\n", tank->stacks[0]->sum);
+	// tankPush(tank, 100);
+	// printf("%d\n", tank->stacks[0]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[0]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[0]->sum);
+	// tankPop(tank);
+
+
+	
+	// TEST # 2
+	// tankPop(tank);
+
+	// TEST # 2
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// tankPush(tank, 100);
+	// printf("%d\n", tank->stacks[0]->sum);
+	// printf("%d\n", tank->stacks[1]->sum);
+	// printf("%d\n", tank->stacks[2]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[2]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[2]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[2]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[2]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[2]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[1]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[1]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[1]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[1]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[1]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[1]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[1]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[1]->sum);
+	// tankPop(tank);
+	// printf("%d\n", tank->stacks[1]->sum);
+	
+
 	return (0);
 }
 

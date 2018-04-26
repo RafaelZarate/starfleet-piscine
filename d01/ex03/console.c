@@ -6,7 +6,7 @@
 /*   By: rzarate <rzarate@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 15:14:07 by rzarate           #+#    #+#             */
-/*   Updated: 2018/04/24 21:05:25 by rzarate          ###   ########.fr       */
+/*   Updated: 2018/04/25 17:07:25 by rzarate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,29 @@ char			*console(void)
 	line = calloc(256, sizeof(char));
 	while (TRUE)
 	{
-		write(1, "?: ", 3);
+		write(1, "tIpe ur msg: ", 13);
 		line_len = readline(&line, stdin);
 		if (strcmp(line, "SEND") == 0)
 			break ;
 		else if (strcmp(line, "UNDO") == 0)
 		{
-			old_idx= pop(stack);
-			while (old_idx < current_len)
+			if (!stack->item)
+				printf("Q is empty, dumbass!\n");
+			else
 			{
-				message[old_idx] = '\0';
-				old_idx++;
+				old_idx = pop(stack);
+				printf("%d---%d\n", old_idx, current_len);
+				while (old_idx < current_len)
+				{
+					message[old_idx] = '\0';
+					old_idx++;
+				}
+				if (!stack->item)
+					current_len = 0;
+				else
+					current_len = strlen(message);
+				printf("%s\n", message);
 			}
-			current_len = stack->item->idx;
-			printf("%s\n", message);
 		}
 		else
 		{
@@ -98,5 +107,8 @@ char			*console(void)
 			printf("%s\n", message);
 		}
 	}
+	free(line);
+	while(stack->item)
+		pop(stack);
 	return (strdup(message));
 }

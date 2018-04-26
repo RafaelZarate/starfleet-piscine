@@ -6,7 +6,7 @@
 /*   By: rzarate <rzarate@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 02:33:55 by rzarate           #+#    #+#             */
-/*   Updated: 2018/04/25 02:55:06 by rzarate          ###   ########.fr       */
+/*   Updated: 2018/04/25 16:36:46 by rzarate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void insertionSort(struct s_player **players)
 	struct s_player	*key;
 
 	i = j = -1;
-	while(players[++i])
+	while (players[++i])
 	{
 		key = players[i];
 		j = i;

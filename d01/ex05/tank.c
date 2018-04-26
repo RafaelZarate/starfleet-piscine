@@ -6,7 +6,7 @@
 /*   By: rzarate <rzarate@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 21:51:01 by rzarate           #+#    #+#             */
-/*   Updated: 2018/04/25 00:10:58 by rzarate          ###   ########.fr       */
+/*   Updated: 2018/04/25 19:02:12 by rzarate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ void tankPush(struct s_tank *tank, int energy)
 	}
 	else
 	{
-		write(1, "TEST1\n", 6);
 		if (CURRENT_STACK->sum + energy <= 1000)
 		{
-			write(1, "TEST2\n", 6);
 			CURRENT_STACK->sum += energy;
 			new_elem->next = CURRENT_STACK->elem;
 			CURRENT_STACK->elem = new_elem;
@@ -68,9 +66,29 @@ int tankPop(struct s_tank *tank)
 	int				energy_removed;
 	struct s_elem	*tmp;
 
-	tmp = CURRENT_STACK->elem;
-	energy_removed = CURRENT_STACK->elem->energy;
-	CURRENT_STACK->elem = CURRENT_STACK->elem->next;
-	free(tmp);
-	return (energy_removed);
+	if (!CURRENT_STACK->elem)
+	{
+		write(1, "All tanks are empty\n", 20);
+		return (0);
+	}
+	else
+	{
+		tmp = CURRENT_STACK->elem;
+		CURRENT_STACK->sum -= CURRENT_STACK->elem->energy;
+		energy_removed = CURRENT_STACK->elem->energy;
+		if (!CURRENT_STACK->elem->next)
+		{
+			if (tank->n > 1)
+			{
+				tank->n--;
+				free(tmp);
+			}
+		}
+		else
+		{
+			CURRENT_STACK->elem = CURRENT_STACK->elem->next;
+			free(tmp);
+		}
+		return (energy_removed);
+	}
 }
