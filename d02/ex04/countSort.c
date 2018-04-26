@@ -6,7 +6,7 @@
 /*   By: rzarate <rzarate@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 23:28:01 by rzarate           #+#    #+#             */
-/*   Updated: 2018/04/26 02:18:37 by rzarate          ###   ########.fr       */
+/*   Updated: 2018/04/26 03:44:56 by rzarate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void countSort(unsigned char *arr, int n)
 	i = i2 = -1;
     while (++i < n)
         count[arr[i]]++;
-	for (i = 0; i < RANGE; i++)
+	for (i = 0; i < RANGE + 1; i++)
 		while (--count[i] > -1)
 			arr[++i2] = i;
 }
