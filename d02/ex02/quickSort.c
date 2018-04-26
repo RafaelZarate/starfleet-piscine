@@ -6,7 +6,7 @@
 /*   By: rzarate <rzarate@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 02:56:02 by rzarate           #+#    #+#             */
-/*   Updated: 2018/04/25 03:05:17 by rzarate          ###   ########.fr       */
+/*   Updated: 2018/04/26 07:27:57 by rzarate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,6 @@ static	void	quickSortAlgo(struct s_player **players, int low, int high)
 		quickSortAlgo(players, low, partition_index - 1);
 		quickSortAlgo(players, partition_index + 1, high);
 	}
-}
-
-// Only way to figure out length of array. O(1) to figure out length of array
-
-static int		arrLen(struct s_player **players)
-{
-	int	i;
-	int	len;
-
-	i = -1;
-	len = 0;
-	while (players[++i])
-		len++;
-	return (len);
 }
 
 void	quickSort(struct s_player **players)

@@ -6,7 +6,7 @@
 /*   By: rzarate <rzarate@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 02:18:23 by rzarate           #+#    #+#             */
-/*   Updated: 2018/04/26 05:50:40 by rzarate          ###   ########.fr       */
+/*   Updated: 2018/04/26 06:08:33 by rzarate          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	binarySearch(int *arr, int start, int end, int value)
 	if (end < start)
 		return (-1);
 	middle = (end + start) / 2;
-	printf("start: %d - end: %d - middle: %d, middle val: %d\n", start, end, middle, arr[middle]);
 	if (value == arr[middle])
 		return (middle);
 	else if (value < arr[middle])
