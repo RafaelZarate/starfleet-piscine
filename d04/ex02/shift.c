@@ -5,37 +5,39 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void handlePositiveShift(char *b, char *shifted, int k, int len)
-{
-	int	i = 0;
-	
-	for (int j = (len - (k % len)); j > 0; j--)
-	{
-		if (b[i] && shifted[i + k])
-			shifted[i + k] = b[i];
-		i++;
-	}
-	shifted[len] = '\0';
-}
-
 char *leftShift(char *bin, int k)
 {
-	k++;
-	return (bin);
+	char	*shifted;
+	int		len;
+
+	len = strlen(bin);
+	shifted = calloc(len + 1, sizeof(char));
+	for (int i = 1; i < len; i++)
+	{
+		if ((i + (k % len)) < len)
+			shifted[i] = bin[i + k];
+		else
+			shifted[i] = bin[0];
+	}
+	shifted[0] = bin[0];
+	return (shifted);
 }
 
 char *rightShift(char *bin, int k)
 {
-	char	sign, *shifted;
+	char	*shifted;
 	int		len;
 
-	sign = bin[0];
 	len = strlen(bin);
-	shifted = malloc(sizeof(char) * len + 1);
-	memset(shifted, '0', len + 1);
-	shifted[len] = '\0';
-	if (sign == '0')
-		handlePositiveShift(bin, shifted, k, len);
+	shifted = calloc(len + 1, sizeof(char));
+	for (int i = 1; i < len; i++)
+	{
+		if ((i - (k % len)) > 0)
+			shifted[i] = bin[i - k];
+		else
+			shifted[i] = bin[0];
+	}
+	shifted[0] = bin[0];
 	return (shifted);
 }
 
@@ -51,15 +53,13 @@ int		power(int x, int y)
 
 int     toInt(char *bits)
 {
-	int	result, j, i;
+	int	result, j, i, neg, total;
 
-	result = j = 0;
+	result = j = total = 0;
+	neg = (bits[0] == '1');
 	i = strlen(bits);
 	for (i -= 1; i >= 0; i--)
-	{
-		if (bits[i] == '1')
-			result += power(2, j);
-		j++;
-	}
-	return (result);
+		result += power(((bits[i] == '1') ^ neg) ? 2 : 0, j++);
+	result -= (neg) ? 0 : 1;
+	return ((neg) ? result * -1 : result);
 }
